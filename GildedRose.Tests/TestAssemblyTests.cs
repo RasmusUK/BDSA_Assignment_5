@@ -25,7 +25,7 @@ namespace GildedRose.Tests
                             SellIn = 15,
                             Quality = 20
                         },
-                        //new Item {Name = "Conjured Mana Cake", SellIn = 3, Quality = 6}
+                        new ConjuredItem {Name = "Conjured Mana Cake", SellIn = 3, Quality = 6}
                     }
                 };
             App = app;
@@ -250,16 +250,26 @@ namespace GildedRose.Tests
             Assert.Equal(expected,actual);
         }
         
-        /*
+        
         [Fact]
         public void ConjuredLose2QualityAfter1WeekBeforeSellin()
         {
-            App.UpdateQuality();
+            App.UpdateAllQualities();
             var expected = 4;
             var actual = App.Items[5].Quality;
             Assert.Equal(expected,actual);
         }
-        */
-    
+
+        [Fact]
+        public void ConjuredLose4QualityAfter1WeekAfterSellin()
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                App.UpdateAllQualities();
+            }
+            var expected = 0;
+            var actual = App.Items[5].Quality;
+            Assert.Equal(expected,actual);
+        }
     }
 }
