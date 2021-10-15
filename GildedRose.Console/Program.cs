@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
+using System;
 
 namespace GildedRose.Console
 {
-    class Program
+    public class Program
     {
-        IList<Item> Items;
+        public IList<Item> Items;
         static void Main(string[] args)
         {
             System.Console.WriteLine("OMGHAI!");
@@ -25,9 +26,7 @@ namespace GildedRose.Console
                                                   },
                                               new Item {Name = "Conjured Mana Cake", SellIn = 3, Quality = 6}
                                           }
-
                           };
-
             app.UpdateQuality();
 
             System.Console.ReadKey();
@@ -112,7 +111,7 @@ namespace GildedRose.Console
 
     }
 
-    public class Item
+    public record Item
     {
         public string Name { get; set; }
 
